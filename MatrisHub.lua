@@ -2,38 +2,38 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "MatrisHub", HidePremium = false, SaveConfig = true, ConfigFolder = "MatrisHub"})
 
 local Tab = Window:MakeTab({
-	Name = "Super Farming",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+    Name = "Trollagens",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
 })
 
 local Section = Tab:AddSection({
-	Name = "Farming Options"
+    Name = "Trollar pessoas"
 })
 
-Tab:AddDropdown({
-	Name = "Weapon",
-	Default = "Meele",
-	Options = {"Meele", "Fruit"},
-	Callback = function(Value)
-		print(Value)
-	end    
+local Dropdown = Tab:AddDropdown({
+    Name = "Matar Player",
+    Default = "Selecione um jogador",
+    Callback = function(Value)
+        print("Selecionou o jogador:", Value)
+    end
 })
 
-Tab:AddToggle({
-	Name = "Skypea Farming",
-	Default = false,
-	Callback = function(Value)
-		print(Value)
-	end    
-})
-
-
-Tab:AddToggle({
-	Name = "This is a toggle!",
-	Default = false,
-	Callback = function(Value)
-		print(Value)
-	end    
+Tab:AddButton({
+    Name = "Matar",
+    Callback = function()
+        local jogadorSelecionado = Dropdown:GetValue()
+        if jogadorSelecionado ~= "Selecione um jogador" then
+            -- Eliminar o jogador selecionado
+            local jogador = game.Players:FindFirstChild(jogadorSelecionado)
+            if jogador then
+                jogador:Kick("Você foi eliminado do jogo.")
+            else
+                print("Jogador não encontrado.")
+            end
+        else
+            print("Nenhum jogador selecionado")
+        end
+    end    
 })
 
