@@ -1,16 +1,3 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "MatrisHub", HidePremium = false, SaveConfig = true, ConfigFolder = "MatrisHub"})
-
-local Tab = Window:MakeTab({
-    Name = "Auto parry",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-local Section = Tab:AddSection({
-    Name = "Parry"
-})
-
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
@@ -80,6 +67,19 @@ local function AutoParryToggle(value)
     end
 end
 
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "MatrisHub", HidePremium = false, SaveConfig = true, ConfigFolder = "MatrisHub"})
+
+local Tab = Window:MakeTab({
+    Name = "Auto parry",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+    Name = "Parry"
+})
+
 
 Tab:AddToggle({
     Name = "Auto Parry",
@@ -87,6 +87,5 @@ Tab:AddToggle({
     Callback = OnToggle
 })
 
--- Main Script End
 
 
